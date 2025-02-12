@@ -1,0 +1,72 @@
+﻿@page "/calculator"
+
+<h3>Calculator</h3>
+<div>
+    <input @bind="num1" TValue="double" placeholder="Enter first number" class="form-control mb-2" />
+    <input @bind="num2" TValue="double" placeholder="Enter second number" class="form-control mb-2" />
+
+    <div class="btn-group">
+        <button @onclick="AddNumbers" class="btn btn-primary">+</button>
+        <button @onclick="SubtractNumbers" class="btn btn-secondary">-</button>
+        <button @onclick="MultiplyNumbers" class="btn btn-success">*</button>
+        <button @onclick="DivideNumbers" class="btn btn-info">/</button>
+    </div>
+
+    <p class="mt-2"><strong>Result:</strong> @finalresult</p>
+</div>
+
+@code {
+    //private string num1Str = "", num2Str = "";
+    private double? num1, num2;
+    private string? finalresult;
+
+   
+    private void AddNumbers()
+    {
+        
+        //if (!double.TryParse(num1Str, out num1)) num1 = 0;
+        //if (!double.TryParse(num2Str, out num2)) num2 = 0;
+
+       
+        Console.WriteLine($"Add: num1 = {num1}, num2 = {num2}");
+
+        finalresult = (num1 + num2).ToString();
+        StateHasChanged(); 
+    }
+
+    
+    private void SubtractNumbers()
+    {
+        // if (!double.TryParse(num1Str, out num1)) num1 = 0;
+        // if (!double.TryParse(num2Str, out num2)) num2 = 0;
+
+        Console.WriteLine($"Subtract: num1 = {num1}, num2 = {num2}");
+
+        finalresult = (num1 - num2).ToString();
+        StateHasChanged();
+    }
+
+    
+    private void MultiplyNumbers()
+    {
+        // if (!double.TryParse(num1Str, out num1)) num1 = 0;
+        // if (!double.TryParse(num2Str, out num2)) num2 = 0;
+
+        Console.WriteLine($"Multiply: num1 = {num1}, num2 = {num2}");
+
+        finalresult = (num1 * num2).ToString();
+        StateHasChanged();
+    }
+
+   
+    private void DivideNumbers()
+    {
+        // if (!double.TryParse(num1Str, out num1)) num1 = 0;
+        // if (!double.TryParse(num2Str, out num2)) num2 = 0;
+
+        Console.WriteLine($"Divide: num1 = {num1}, num2 = {num2}");
+
+        finalresult = num2 == 0 ? "Cannot divide by zero" : (num1 / num2).ToString();
+        StateHasChanged();
+    }
+}
